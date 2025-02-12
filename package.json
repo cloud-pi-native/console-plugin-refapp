@@ -1,0 +1,56 @@
+{
+  "name": "@cpn-console/refapp-plugin",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Refapp plugin for DSO console",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./types",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "nodemon --watch src --ext .ts --exec 'npm run build'",
+    "build": "tsc",
+    "build:clean": "rm -rf ./dist ./types ./tsconfig.tsbuildinfo",
+    "format": "eslint ./src --fix",
+    "lint": "eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
+    "swagger:generate": "bash -c 'source .env && swagger-typescript-api -p $SWAGGER_URL -o ./src/api --axios'"
+  },
+  "dependencies": {
+    "@cpn-console/hooks": "^4.0.0",
+    "@cpn-console/shared": "^1.3.0",
+    "@keycloak/keycloak-admin-client": "^26.1.2",
+    "axios": "^1.7.9",
+    "js-yaml": "4.1.0",
+    "qs": "^6.14.0",
+    "uuid": "^11.0.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.2.0",
+    "@cpn-console/eslint-config": "^1.0.2",
+    "@cpn-console/ts-config": "^1.1.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.7",
+    "@types/qs": "^6.9.18",
+    "@types/uuid": "^10.0.0",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "swagger-typescript-api": "^13.0.23",
+    "typescript": "^5.7.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "tag": "latest"
+  }
+}
